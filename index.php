@@ -175,7 +175,7 @@ $proyectoB->agregarDiseno($diseno4);
   </div>
 <!-- <body class="bg-oscuro bg-vfondo bg-cover bg-center text-white">  -->
     <header class="mt-10">
-      <h1 class="font-black text-5xl text-center">SINROD</h1>
+      <h1 class="font-black text-5xl text-center">SINROD.</h1>
       <nav>
           <ul class="list-none w-full text-3xl font-extrabold flex justify-between px-32">
               <li><a href="" class="hover:underline">HOME</a></li>
