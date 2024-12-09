@@ -151,12 +151,8 @@ $proyectoB->agregarDiseno($diseno4);
       ]
     }
   </script>
-  <style>
-    main { overflow-y: scroll; scrollbar-width: none; -ms-overflow-style: none; /* for Internet Explorer, Edge */ } main::-webkit-scrollbar { display: none; /* for Chrome, Safari, and Opera */ }
-    body { background-image: url('/assets/img/rsz_vigo.jpg'); background-size: cover; background-position: center; background-attachment: fixed; background-repeat: no-repeat; }
-  </style>
 </head>
-<body class="bg-oscuro text-white flex flex-col min-h-screen"> 
+<body class="bg-oscuro bg-cover bg-center text-white h-screen" style="background-image: url('/assets/img/rsz_vigo.jpg');"> 
   <div class="fixed left-0 right-0 z-50 bottom-5 mx-auto p-3 w-fit bg-black/50 rounded-lg flex items-center justify-between gap-5 shadow-lg">
     <a href="">
       <svg xmlns="http://www.w3.org/2000/svg" class="fill-white w-4 h-4 sm:w-5 sm:h-5 hover:w-6 hover:h-6 transition-all" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256C0 376 82.7 476.8 194.2 504.5V334.2H141.4V256h52.8V222.3c0-87.1 39.4-127.5 125-127.5c16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1c-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287V510.1C413.8 494.8 512 386.9 512 256h0z"/></svg>
@@ -177,21 +173,20 @@ $proyectoB->agregarDiseno($diseno4);
       <svg xmlns="http://www.w3.org/2000/svg" class="fill-white w-4 h-4 sm:w-5 sm:h-5 hover:w-6 hover:h-6 transition-all"  viewBox="0 0 496 512"><!--!Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M248 8C111.1 8 0 119.1 0 256s111.1 248 248 248 248-111.1 248-248S384.9 8 248 8zm100.7 364.9c-4.2 0-6.8-1.3-10.7-3.6-62.4-37.6-135-39.2-206.7-24.5-3.9 1-9 2.6-11.9 2.6-9.7 0-15.8-7.7-15.8-15.8 0-10.3 6.1-15.2 13.6-16.8 81.9-18.1 165.6-16.5 237 26.2 6.1 3.9 9.7 7.4 9.7 16.5s-7.1 15.4-15.2 15.4zm26.9-65.6c-5.2 0-8.7-2.3-12.3-4.2-62.5-37-155.7-51.9-238.6-29.4-4.8 1.3-7.4 2.6-11.9 2.6-10.7 0-19.4-8.7-19.4-19.4s5.2-17.8 15.5-20.7c27.8-7.8 56.2-13.6 97.8-13.6 64.9 0 127.6 16.1 177 45.5 8.1 4.8 11.3 11 11.3 19.7-.1 10.8-8.5 19.5-19.4 19.5zm31-76.2c-5.2 0-8.4-1.3-12.9-3.9-71.2-42.5-198.5-52.7-280.9-29.7-3.6 1-8.1 2.6-12.9 2.6-13.2 0-23.3-10.3-23.3-23.6 0-13.6 8.4-21.3 17.4-23.9 35.2-10.3 74.6-15.2 117.5-15.2 73 0 149.5 15.2 205.4 47.8 7.8 4.5 12.9 10.7 12.9 22.6 0 13.6-11 23.3-23.2 23.3z"/></svg>
     </a>
   </div>
-  <!-- <header class="mt-10"> -->
-  <header class="py-2 fixed top-0 w-full bg-black/50 shadow-lg z-10">
-    <h1 class="font-black text-5xl text-center">SINROD.</h1>
-    <nav>
-      <ul class="list-none w-full text-xl font-extrabold flex flex-wrap gap-3  px-4 sm:text-2xl sm:px-8 md:text-3xl md:px-16 lg:flex-nowrap lg:justify-around lg:px-32">
-        <li><a href="" class="hover:underline">HOME</a></li> |
-        <li><a href="" class="hover:underline">WHO I AM?</a></li> |
-        <li><a href="" class="hover:underline">PROJECTS</a></li> |
-        <li><a href="" class="hover:underline">BLOG</a></li> |
-        <li><a href="" class="hover:underline">CONTACT</a></li>
-      </ul>
-    </nav>
-  </header>
-<!-- <main class="overflow-y-scroll scroll-smooth h-screen" style="scrollbar-width: none;"> -->
-<main class="overflow-y-scroll flex-1 scroll-smooth mt-16">
+<!-- <body class="bg-oscuro bg-vfondo bg-cover bg-center text-white">  -->
+    <header class="mt-10">
+      <h1 class="font-black text-5xl text-center">SINROD.</h1>
+      <nav>
+        <ul class="list-none w-full text-xl font-extrabold flex flex-wrap justify-between px-4 sm:text-2xl sm:px-8 md:text-3xl md:px-16 lg:flex-nowrap lg:justify-around lg:px-32">
+          <li><a href="" class="hover:underline">HOME</a></li> |
+          <li><a href="" class="hover:underline">WHO I AM?</a></li> |
+          <li><a href="" class="hover:underline">PROJECTS</a></li> |
+          <li><a href="" class="hover:underline">BLOG</a></li> |
+          <li><a href="" class="hover:underline">CONTACT</a></li>
+        </ul>
+      </nav>
+    </header>
+<main class="overflow-y-scroll scroll-smooth h-screen" style="scrollbar-width: none;">
     <!-- Hero Section: Espacio en blanco -->
   <section class="w-full h-screen"></section>
 
@@ -256,22 +251,16 @@ $proyectoB->agregarDiseno($diseno4);
         <a href="" class="bg-gray-400 hover:underline hover:bg-gradient-to-t from-black to-transparent rounded-lg aspect-square col-start-1 md:col-start-3 relative order-1 md:order-2 group transition-all duration-300 ease-in-out">
           <div class="absolute bottom-0 p-4">
             <h3 class="mb-3 font-bold group-hover:underline transition-all duration-300 ease-in-out">Titulo</h3>
-            <p class="font-light inline-block md:hidden">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam fugit molestias nemo reprehenderit dolores
-              sapiente, corrupti fuga vel dignissimos distinctio, ipsam, a ad maxime sequi doloribus repellat ducimus. Eum,
-              nobis!
-            </p>
           </div>
         </a>
       </div>
       <a href="#" class="text-white underline font-bold">Do u wanna see more? -></a>
     </section>
-</main>
-<!-- <footer class="bg-purple-700 py-12 text-white font-extrabold text-center"> -->
-<footer class="bg-purple-700 py-12 text-white font-extrabold text-center">
-  <h4>&reg; 2024, SINROD GRAPHIC DESIGNER</h4>
-  <h5>Powered by <a class="underline">SANREYNO</a></h5>
-</footer>
+  </main>
+    <footer class="bg-purple-700 py-12 text-white font-extrabold text-center">
+      <h4>&reg; 2024, SINROD GRAPHIC DESIGNER</h4>
+      <h5>Powered by <a class="underline">SANREYNO</a></h5>
+    </footer>
       
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="assets/lightbox/js/lightbox.js"></script>
