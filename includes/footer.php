@@ -9,13 +9,18 @@
   <script>
   //GO TO TOP
   var toTopButton = document.getElementById("to-top-button");
+  var socialmedia = document.getElementById("socialmedia");
 
   // When the user scrolls down 200px from the top of the document, show the button
   window.onscroll = function () {
     if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-      toTopButton.classList.remove("hidden");
+      // toTopButton.classList.remove("hidden");
+      toTopButton.classList.remove("translate-x-20");
+      socialmedia.classList.remove("translate-y-20");
     } else {
-      toTopButton.classList.add("hidden");
+      toTopButton.classList.add("translate-x-20");
+      socialmedia.classList.add("translate-y-20");
+      // toTopButton.classList.add("hidden");
     }
   }
 
@@ -26,6 +31,27 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
   </script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const header = document.getElementById("header");
+    let lastScroll = 0;
+
+    window.addEventListener("scroll", () => {
+      const currentScroll = window.pageYOffset;
+      
+      if (currentScroll > lastScroll && currentScroll > 50) {
+        // Usuario está haciendo scroll hacia abajo: oculta el header
+        header.classList.add("-translate-y-full");
+      } else if (currentScroll < lastScroll) {
+        // Usuario está haciendo scroll hacia arriba: muestra el header
+        header.classList.remove("-translate-y-full");
+      }
+
+      lastScroll = currentScroll;
+    });
+  });
+</script>
 
 </body>
 </html>

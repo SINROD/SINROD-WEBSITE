@@ -4,7 +4,7 @@ include_once("../includes/header.php");
  ?>
 <main class="overflow-y-scroll flex-1 scroll-smooth mt-dynamic pt-10">
   <!--  -->
-    <section class="container mx-auto px-32">
+    <section class="container mx-auto px-5 lg:px-32">
         <h2 class="font-black text-5xl text-center mb-8">WHO IS SINROD?</h2>
         <p class="leading-7 text-pretty mb-4">SINROD was born to bring ideas to life, especially in the realms of music, art, album covers, flyers, and even souvenirs like lighters and t-shirts that enhance the identity of a project.</p>
         <!-- FOTOS DE LAS PEQUEÑAS COSAS QUE HE CREADO COMO LOS ENCEDENDORES, LAS PLAYERAS Y COSAS ASI QUE HE HECHO DE MANERA JUST FOR FUN -->
