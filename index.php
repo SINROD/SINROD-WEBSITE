@@ -11,7 +11,7 @@
   </section>
 
   <!-- Portfolio Grid -->
-  <section class="container mx-auto pb-8">
+  <section class="container mx-auto pb-8 px-32">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
       <div class="bg-gray-400 rounded-lg aspect-square flex justify-center items-center">1</div>
       <div class="bg-gray-400 rounded-lg aspect-square flex justify-center items-center">2</div>
@@ -29,7 +29,7 @@
   </section>
 
   <!-- Assets Section -->
-  <section class="container mx-auto mb-16">
+  <section class="container mx-auto px-32 mb-16">
     <h3 class="text-4xl md:text-6xl lg:text-8xl text-center font-extrabold mb-8">MIS ASSETS HOMS</h3>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
       <div class="bg-gray-400 group hover:underline hover:bg-gradient-to-t from-black to-transparent rounded-lg aspect-square flex items-end justify-center">
@@ -45,7 +45,7 @@
   </section>
 
   <!-- Blog Section -->
-    <section class="container mx-auto mb-16">
+    <section class="container mx-auto px-32 mb-16">
       <h3 class="text-4xl md:text-6xl lg:text-8xl text-center font-extrabold mb-8">BLOOOOOOOOG</h3>
       <div class="grid grid-cols-1 md:grid-cols-3 grid-rows-2 md:grid-rows-1 gap-4 mb-8">
         <!-- Primer elemento (ocupando 2 columnas en pantallas medianas y grandes) -->
