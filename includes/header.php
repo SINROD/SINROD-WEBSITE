@@ -53,8 +53,9 @@ class Diseno {
 
 // Crear objetos de tipo
 $portada = new Tipo('Portada');
-$foto = new Tipo('Foto');
+$foto = new Tipo('Fotografía');
 $poster = new Tipo('Poster');
+$zines = new Tipo('Zines');
 
 // Crear objetos de proyecto
 $proyectoA = new Proyecto('Proyecto A', '2024-11-28', 'Descripción del Proyecto A', ['SINROD'], 'Lugar A');
@@ -201,11 +202,11 @@ $proyectoB->agregarDiseno($diseno4);
     <h1 class="font-black text-5xl text-center">SINROD.</h1>
     <nav>
       <ul class="list-none w-full text-xl font-extrabold flex flex-wrap gap-3 px-4 sm:text-2xl sm:px-8 md:text-3xl md:px-16 lg:flex-nowrap lg:justify-around lg:px-32 ">
-        <li><a href="http://sinrod/" class="hover:underline">HOME</a></li> |
-        <li><a href="http://sinrod/pages/whoiam" class="hover:underline">WHO I AM?</a></li> |
-        <li><a href="http://sinrod/pages/projects" class="hover:underline">PROJECTS</a></li> |
-        <li><a href="http://sinrod/pages/blog" class="hover:underline">BLOG</a></li> |
-        <li><a href="http://sinrod/pages/contact" class="hover:underline">CONTACT</a></li>
+        <li><a href="https://sinrod.sanreyno.com/" class="hover:underline">HOME</a></li> |
+        <li><a href="https://sinrod.sanreyno.com/pages/whoiam" class="hover:underline">WHO I AM?</a></li> |
+        <li><a href="https://sinrod.sanreyno.com/pages/projects" class="hover:underline">PROJECTS</a></li> |
+        <li><a href="https://sinrod.sanreyno.com/pages/blog" class="hover:underline">BLOG</a></li> |
+        <li><a href="https://sinrod.sanreyno.com/pages/contact" class="hover:underline">CONTACT</a></li>
       </ul>
     </nav>
   </header><!-- <main class="overflow-y-scroll scroll-smooth h-screen" style="scrollbar-width: none;"> -->
