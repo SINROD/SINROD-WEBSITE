@@ -1,4 +1,85 @@
-<?php include_once("includes/header.php"); ?>
+<?php
+function sendPostRequest($url, $data) {
+    $options = [
+        'http' => [
+            'header'  => "Content-type: application/json\r\n",
+            'method'  => 'POST',
+            'content' => json_encode($data),
+        ],
+    ];
+    $context = stream_context_create($options);
+    $response = file_get_contents($url, false, $context);
+
+    if ($response === false) {
+        return null; // Manejar error en la solicitud
+    }
+
+    $decodedResponse = json_decode($response, true);
+
+    if ($decodedResponse === null) {
+        return null; // Manejar error en la decodificación JSON
+    }
+
+    return $decodedResponse;
+}
+
+$url = 'http://sinrod/pai/api-projects.php';
+
+// Solicitud para "home"
+$datahome = sendPostRequest($url, ['home' => 'home']);
+
+// Solicitud para "assets"
+$dataAssets = sendPostRequest($url, ['tag' => 'assets']);
+
+$urlBlog = 'http://sinrod/pai/api-blog.php';
+// Solicitud para "assets"
+$dataBlogMain = sendPostRequest($urlBlog, ['main' => 'ok']);
+
+
+// Eliminar el último elemento de los arreglos, si es necesario
+array_pop($datahome);
+array_pop($dataAssets);
+array_pop($dataBlogMain);
+
+$cantPost = count($dataBlogMain);
+
+?>
+
+<?php 
+$titulo = "SINROD PROJECTS | "; 
+$url = 'http://sinrod/pai/api-projects.php';
+$data = ['home' => 'home'];
+$options = [
+    'http' => [
+        'header'  => "Content-type: application/json\r\n",
+        'method'  => 'POST',
+        'content' => json_encode($data),
+    ],
+];
+$context  = stream_context_create($options);
+$response = file_get_contents($url, false, $context);
+
+$datahome = json_decode($response, true);
+
+$url = 'http://sinrod/pai/api-projects.php';
+$data = ['tag' => 'assets'];
+$options = [
+    'http' => [
+        'header'  => "Content-type: application/json\r\n",
+        'method'  => 'POST',
+        'content' => json_encode($data),
+    ],
+];
+$context  = stream_context_create($options);
+$responseAssets = file_get_contents($url, false, $context);
+
+$dataAssets = json_decode($responseAssets, true);
+
+array_pop($datahome);
+array_pop($dataAssets);
+
+include_once("includes/header.php"); ?>
+
 <!-- <main class="overflow-y-scroll scroll-smooth h-screen" style="scrollbar-width: none;"> -->
 <main class="overflow-y-scroll flex-1 scroll-smooth mt-16">
     <!-- Hero Section: Espacio en blanco -->
@@ -13,14 +94,13 @@
   <!-- Portfolio Grid -->
   <section class="container mx-auto pb-8 px-6 sm:px-8 md:px-16 lg:px-32">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
-      <div class="bg-gray-400 hover:transform hover:scale-95 transition-all cursor-pointer rounded-lg aspect-square flex justify-center items-center">1</div>
-      <div class="bg-gray-400 hover:transform hover:scale-95 transition-all cursor-pointer rounded-lg aspect-square flex justify-center items-center">2</div>
-      <div class="bg-gray-400 hover:transform hover:scale-95 transition-all cursor-pointer rounded-lg aspect-square flex justify-center items-center">3</div>
-      <div class="bg-gray-400 hover:transform hover:scale-95 transition-all cursor-pointer rounded-lg aspect-square flex justify-center items-center">4</div>
-      <div class="bg-gray-400 hover:transform hover:scale-95 transition-all cursor-pointer rounded-lg aspect-square flex justify-center items-center">5</div>
-      <div class="bg-gray-400 hover:transform hover:scale-95 transition-all cursor-pointer rounded-lg aspect-square flex justify-center items-center">6</div>
+    <?php foreach ($datahome as $p) { ?>
+      <a href="<?= uProjects . $p["slug"]?>">
+        <div class="bg-gray-400 hover:transform hover:scale-95 transition-all cursor-pointer rounded-lg aspect-square flex justify-center items-center bg-no-repeat bg-center bg-cover" style="background-image: url('/cms/assets/<?= $p["imgs"][0] ?>');"></div>
+      </a>
+    <?php } ?>
     </div>
-    <a href="http://sinrod/pages/projects" class="text-white underline font-bold">I have more design, click here for more -></a>
+    <a href="<?= pProjects ?>" class="text-white underline font-bold">I have more design, click here for more -></a>
   </section>
 
   <!-- Skills Section -->
@@ -34,55 +114,53 @@
       MIS ASSETS HOMS
     </h3>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-      <div
-        class="bg-gray-400 group hover:underline hover:transform hover:scale-95 transition-transform duration-300 cursor-pointer rounded-lg aspect-square flex items-end justify-center"
-      >
-        <h3 class="mb-3 font-bold group-hover:underline">Titulo</h3>
-      </div>
-      <div
-        class="bg-gray-400 group hover:underline hover:transform hover:scale-95 transition-transform duration-300 cursor-pointer rounded-lg aspect-square flex items-end justify-center"
-      >
-        <h3 class="mb-3 font-bold group-hover:underline">Titulo</h3>
-      </div>
-      <div
-        class="bg-gray-400 group hover:underline hover:transform hover:scale-95 transition-transform duration-300 cursor-pointer rounded-lg aspect-square flex items-end justify-center"
-      >
-        <h3 class="mb-3 font-bold group-hover:underline">Titulo</h3>
-      </div>
+    <?php foreach ($dataAssets as $assets) { ?>
+      <a href="<?= uProjects . $assets["slug"] ?? '404' ?>">
+        <div class="bg-gray-400 group hover:underline hover:transform hover:scale-95 transition-transform duration-300 cursor-pointer rounded-lg aspect-square flex items-end justify-center bg-no-repeat bg-center bg-cover" style="background-image: url('/cms/assets/<?= $assets["imgs"][0] ?>');">
+          <!-- <h3 class="mb-3 font-bold group-hover:underline"><?= $assets["titulo"] ?></h3> -->
+        </div>
+      </a>
+    <?php }  ?>
     </div>
   </section>
 
 
   <!-- Blog Section -->
+
+<?php if ($cantPost > 0) { ?>
   <section class="container mx-auto px-6 sm:px-8 md:px-16 lg:px-32 mb-16">
-      <h3 class="text-4xl md:text-6xl lg:text-8xl text-center font-extrabold mb-8">BLOOOOOOOOG</h3>
-      <div class="grid grid-cols-1 md:grid-cols-3 grid-rows-2 md:grid-rows-1 gap-4 mb-8">
-        <!-- Primer elemento (ocupando 2 columnas en pantallas medianas y grandes) -->
-        <a href="" class="bg-gray-400 hover:underline hover:transform hover:scale-95 transition-all cursor-pointer rounded-lg aspect-h-auto aspect-w-full col-span-1 md:col-span-2 relative order-2 md:order-1 group transition-all duration-300 ease-in-out">
-          <div class="absolute bottom-0 p-4">
-            <h3 class="mb-3 font-bold group-hover:underline transition-all duration-300 ease-in-out">Titulo</h3>
-            <p class="font-light">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam fugit molestias nemo reprehenderit dolores
-              sapiente, corrupti fuga vel dignissimos distinctio, ipsam, a ad maxime sequi doloribus repellat ducimus. Eum,
-              nobis!
-            </p>
-          </div>
-        </a>
+    <h3 class="text-4xl md:text-6xl lg:text-8xl text-center font-extrabold mb-8">BLOOOOOOOOG</h3>
+    <div class="grid grid-cols-1 md:grid-cols-3 grid-rows-2 md:grid-rows-1 gap-4 mb-8 h-52">
+      <!-- Primer elemento -->
+      <?php if (isset($dataBlogMain[0])) { ?>
+      <a href="<?= uPosts.$dataBlogMain[0]["slug"] ?? '404' ?>" 
+         class="bg-gray-400 hover:underline hover:transform hover:scale-95 transition-all cursor-pointer rounded-lg aspect-h-auto aspect-w-full <?= ($cantPost > 1) ? 'col-span-1 md:col-span-2' : 'col-span-3' ?> relative order-2 md:order-1 group transition-all duration-300 ease-in-out bg-no-repeat bg-center bg-cover" 
+         style="background-image: url('/cms/assets/<?= $dataBlogMain[0]['img_url'] ?? 'default-image.jpg' ?>');"
+         aria-label="<?= $dataBlogMain[0]['titulo'] ?>">
+        <div class="absolute bottom-0 p-4 w-full bg-black/60 rounded-b-lg">
+          <h3 class="mb-3 font-bold group-hover:underline transition-all duration-300 ease-in-out"><?= $dataBlogMain[0]['titulo'] ?></h3>
+          <p class="font-light truncate"><?= $dataBlogMain[0]['descripcion'] ?></p>
+        </div>
+      </a>
+      <?php } ?>
 
-
-        <!-- Segundo elemento (aparecerá abajo en dispositivos móviles) -->
-        <a href="" class="bg-gray-400 hover:underline hover:transform hover:scale-95 transition-all cursor-pointer rounded-lg aspect-square col-start-1 md:col-start-3 relative order-1 md:order-2 group transition-all duration-300 ease-in-out">
-          <div class="absolute bottom-0 p-4">
-            <h3 class="mb-3 font-bold group-hover:underline transition-all duration-300 ease-in-out">Titulo</h3>
-            <p class="font-light inline-block md:hidden lg:inline-block">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam fugit molestias nemo reprehenderit dolores
-              sapiente, corrupti fuga vel dignissimos distinctio, ipsam, a ad maxime sequi doloribus repellat ducimus. Eum,
-              nobis!
-            </p>
-          </div>
-        </a>
-      </div>
-      <a href="http://sinrod/pages/blog" class="text-white underline font-bold">Do u wanna see more? -></a>
+      <!-- Segundo elemento -->
+      <?php if (isset($dataBlogMain[1])) { ?>
+      <a href="<?= uPosts.$dataBlogMain[1]["slug"] ?? '#' ?>" 
+         class="bg-gray-400 hover:underline hover:transform hover:scale-95 transition-all cursor-pointer rounded-lg aspect-square col-start-1 md:col-start-3 relative order-1 md:order-2 group transition-all duration-300 ease-in-out bg-no-repeat bg-center bg-cover" 
+         style="background-image: url('/cms/assets/<?= $dataBlogMain[1]['img_url'] ?? 'default-image.jpg' ?>');"
+         aria-label="<?= $dataBlogMain[1]['titulo'] ?>">
+        <div class="absolute bottom-0 p-4">
+          <h3 class="mb-3 font-bold group-hover:underline transition-all duration-300 ease-in-out"><?= $dataBlogMain[1]['titulo'] ?></h3>
+          <p class="font-light inline-block md:hidden lg:inline-block"><?= $dataBlogMain[1]['descripcion'] ?></p>
+        </div>
+      </a>
+      <?php } ?>
+    </div>
+    <a href="<?= pBlog ?>" class="text-white underline font-bold">Do u wanna see more? -></a>
   </section>
+<?php } ?>
+
+
 </main>
 <?php include_once("includes/footer.php"); ?>

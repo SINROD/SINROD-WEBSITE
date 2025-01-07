@@ -109,7 +109,7 @@ $proyectoB->agregarDiseno($diseno4);
 //     echo "<p>Proyecto: {$proyectoB->nombre}</p>";
 //     echo "<p>Descripción del Proyecto: {$proyectoB->descripcion}</p>";
 // }
-
+include_once("config.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -118,7 +118,6 @@ $proyectoB->agregarDiseno($diseno4);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php if(isset($titulo)){echo($titulo);} ?>SINROD Desgin</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="assets/lightbox/css/lightbox.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -162,7 +161,7 @@ $proyectoB->agregarDiseno($diseno4);
     body { background-image: url('/assets/img/rsz_vigo.jpg'); background-size: cover; background-position: center; background-attachment: fixed; background-repeat: no-repeat; }
     main {
       overflow-y: scroll; 
-      crollbar-width: none; 
+      --crollbar-width: none; 
       -ms-overflow-style: none; /* for Internet Explorer, Edge */ 
     } 
     main::-webkit-scrollbar { display: none; /* for Chrome, Safari, and Opera */ }
@@ -202,11 +201,11 @@ $proyectoB->agregarDiseno($diseno4);
     <h1 class="font-black text-5xl text-center">SINROD.</h1>
     <nav>
       <ul class="list-none w-full text-xl font-extrabold flex flex-wrap gap-3 px-4 sm:text-2xl sm:px-8 md:text-3xl md:px-16 lg:flex-nowrap lg:justify-around lg:px-32 ">
-        <li><a href="https://sinrod.sanreyno.com/" class="hover:underline">HOME</a></li> |
-        <li><a href="https://sinrod.sanreyno.com/pages/whoiam" class="hover:underline">WHO I AM?</a></li> |
-        <li><a href="https://sinrod.sanreyno.com/pages/projects" class="hover:underline">PROJECTS</a></li> |
-        <li><a href="https://sinrod.sanreyno.com/pages/blog" class="hover:underline">BLOG</a></li> |
-        <li><a href="https://sinrod.sanreyno.com/pages/contact" class="hover:underline">CONTACT</a></li>
+        <li><a href="<?= uRaiz ?>" class="hover:underline">HOME</a></li> |
+        <li><a href="<?= pWhoiam ?>" class="hover:underline">WHO I AM?</a></li> |
+        <li><a href="<?= pProjects ?>" class="hover:underline">PROJECTS</a></li> |
+        <li><a href="<?= pBlog ?>" class="hover:underline">BLOG</a></li> |
+        <li><a href="<?= pContact ?>" class="hover:underline">CONTACT</a></li>
       </ul>
     </nav>
-  </header><!-- <main class="overflow-y-scroll scroll-smooth h-screen" style="scrollbar-width: none;"> -->
+  </header>

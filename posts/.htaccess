@@ -1,0 +1,7 @@
+RewriteEngine On
+
+# Redirigir las URLs de /posts/{slug} a tu_archivo.php en la carpeta posts
+#RewriteRule ^(.+)$ post.php?slug=$1 [L,QSA]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([^/]+)/?$ index.php?slug=$1 [L,QSA]
